@@ -9,4 +9,4 @@ getCurrentPage();
 renderUI();
 
 // Add modal-movie
-modalMovie();
+// modalMovie();
