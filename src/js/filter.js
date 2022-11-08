@@ -59,12 +59,12 @@ export async function filterByGenres(genre,page) {
     if (page === 1) {
       moviesList.innerHTML = '';
     }
-    const genresDictionary = await getGenres();
-    console.log(genresDictionary);
-    genresArr = Object.values(genresDictionary);
-    const targetGenre = genresArr.find(g => g.name === genre).id;
-    console.log(targetGenre);
-    const results = await sortByGenre(targetGenre);
+    // const genresDictionary = await getGenres();
+    // console.log(genresDictionary);
+    // genresArr = Object.values(genresDictionary);
+    // const targetGenre = genresArr.find(g => g.name === genre).id;
+    // console.log(targetGenre);
+    const results = await sortByGenre(genre);
 
       render(results.results);
   } catch (err) {
@@ -74,14 +74,14 @@ export async function filterByGenres(genre,page) {
 }
  
 async function render(data) {
-  const genres = await getGenres().then(list => {
-
-    return list.genres;
-  });
-  const resultsGenre = await convertResponseDataToObject(data,genres);
+//   const genres = await getGenres().then(list => {
+// console.log(list);
+//     return list.genres;
+  // });
+  const resultsGenre = await convertResponseDataToObject(data);
   resultsGenre.map(res => {console.log(res.genres); res.genres})
   const cardsGallery = movieCardTpl({ resultsGenre });
-  console.log(cardsGallery);
+  console.log(resultsGenre);
   moviesList.insertAdjacentHTML('beforeend', cardsGallery);
 }
 
