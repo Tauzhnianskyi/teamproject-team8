@@ -14,7 +14,7 @@ const options = {
 const observer = new IntersectionObserver(renderUI, options);
 let page = 1;
 
-async function fetchInitialData(page = 1) {
+export async function fetchInitialData(page = 1) {
   try {
     const {
       data: { results },
@@ -31,7 +31,7 @@ async function fetchInitialData(page = 1) {
   }
 }
 
-async function convertResponseDataToObject(results) {
+export async function convertResponseDataToObject(results) {
   const genresDictionary = await getGenres();
   return results.map(elem => {
     return {
