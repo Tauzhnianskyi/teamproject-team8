@@ -68,7 +68,7 @@
     width: 400px;
     height: 478px;
     margin-right: 16px;
-    object-fit: cover;
+    object-fit: contain;
   }
 }
 .modal-plug {
@@ -297,3 +297,43 @@ ul li {
   font-size: 12px;
   line-height: 14px;
 }
+
+//-------pagination style--------
+
+// .title {
+//   display: flex;
+//   justify-content: center;
+// }
+
+// .posts {
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+// }
+
+// .post {
+//   padding: 8px;
+//   border-color: bisque;
+//   border: 1px;
+// }
+
+// .pagination {
+//   display: flex;
+//   justify-content: center;
+// }
+
+// .pagination__list {
+//   display: flex;
+//   list-style-type: none;
+// }
+
+// .pagination__item {
+//   padding: 8px;
+//   margin: 8px;
+//   cursor: pointer;
+// }
+
+// .pagination__item--active {
+//   font-weight: 800;
+//   color: ff6b01;
+// }

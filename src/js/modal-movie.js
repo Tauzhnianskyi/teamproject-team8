@@ -135,7 +135,7 @@ window.addEventListener('keydown', evt => {
   }
 });
 
-// цветовое решение для рейтинга
+// get color by rating
 
 function getClassByRate(vote) {
   if (vote >= 7) {
@@ -147,7 +147,7 @@ function getClassByRate(vote) {
   }
 }
 
-//проверка img
+//get image
 
 function getImgPath(poster, backdrop, url, backupPoster) {
   if (poster === null) {
@@ -160,7 +160,7 @@ function getImgPath(poster, backdrop, url, backupPoster) {
   }
 }
 
-// Adds event listeners to the movies list DOM element
+// adds eventlisteners to the movies list DOM element
 
 export function AddListenerToMovieList() {
   const movieCards = document.querySelector('.movie-list');
@@ -185,3 +185,65 @@ export function AddListenerToMovieList() {
   //   console.log('after add listener:');
   //   console.log(movieCards);
 }
+
+// -------------pagination-----------------
+async function getDate() {
+  const response = await fetch('movie_url_original');
+  const data = await response.json();
+  return data;
+}
+
+async function main() {
+  const postData = await getDate();
+  let currentPage = 1;
+  let rows = 10;
+
+  function displayList(arrDate, rowPerPage, page) {
+    const postsEl = document.querySelector('.posts');
+    postsEl.innerHTML = '';
+    page -= 1;
+    const start = rowPerPage * page;
+    const end = start + rowPerPage;
+    const paginatedData = arrDate.slice(start, end);
+
+    paginatedData.forEach(element => {
+      const postEl = document.createElement('div');
+      postEl.classList.add('post');
+      postEl.innerText = `${element.title}`;
+      postsEl.appendChild(postEl);
+    });
+  }
+
+  function displayPagination(arrDate, rowPerPage) {
+    const paginationEl = document.querySelector('.pagination');
+    const pagesCount = Math.ceil(arrDate.lenght / rowPerPage);
+    const ulEl = document.createElement('ul');
+    ulEl.classList.add('pagination__list');
+
+    for (let i = 0; i < pagesCount; i += 1) {
+      const liEl = displayPaginationBtn(i + 1);
+      ulEl.appendChild(liEl);
+    }
+    paginationEl.appendChild(ulEl);
+  }
+  function displayPaginationBtn() {
+    const liEl = document.createElement('li');
+    liEl.classList.add('pagination__item');
+    liEl.innerText = page;
+    if (currentPage === page) liEl.classList.add('pagination__item--active');
+    
+    liEl.addEventListener('click', () => {
+      currentPage = page;
+      displayList(postData, currentPage, page);
+      let currentItemLi = document.querySelector('li.pagination__item--active');
+      currentItemLi.classList.remove('pagination__item--active');
+      liEl.classList.add('pagination__item--active');
+    });
+
+    return liEl;
+  }
+  displayList(postData, currentPage, rows);
+  displayPagination(postData, rows);
+}
+
+main();
