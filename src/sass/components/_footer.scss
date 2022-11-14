@@ -162,7 +162,7 @@
 .footer-team-link {
   display: flex;
   flex-wrap: wrap;
-  gap: 50px;
+  gap: 35px;
   margin: 15px 10px;
 
   @media (max-width:480px) {
@@ -170,8 +170,11 @@
   }
 
   @media (max-width:768px) {
-    gap: 8px;
+    gap: 36px;
   }
+    @media (max-width:1280px) {
+      gap: 36px;
+    }
 }
 
 .footer-team-link-list {
