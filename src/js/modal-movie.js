@@ -52,7 +52,6 @@ export async function openModal(movie_id, movieSmallPoster) {
       if (addToWatchedBtn.innerHTML === 'ADD TO WATCHED') {
         addToWatchedBtn.innerHTML = 'REMOVE FROM WATCHED';
       } else {
-        localStorage.removeItem('WatchedList', JSON.stringify(movieObj));
         addToWatchedBtn.innerHTML = 'ADD TO WATCHED';
       }
       const storageClick = new LocalStorageWatchedUtil();
@@ -67,10 +66,8 @@ export async function openModal(movie_id, movieSmallPoster) {
       if (addToQueuedBtn.innerHTML === 'ADD TO QUEUED') {
         addToQueuedBtn.innerHTML = 'REMOVE FROM QUEUED';
       } else {
-        localStorage.removeItem('QueuedList', JSON.stringify(movieObj));
         addToQueuedBtn.innerHTML = 'ADD TO QUEUED';
       }
-      // console.log(movieObj);
       const storageClickQ = new LocalStorageQueuedUtil();
       storageClickQ.addQueued(movieObj);
     }
