@@ -44,12 +44,20 @@ export async function openModal(movie_id, movieSmallPoster) {
 
     modalEl.innerHTML = movieModalTpl(respData);
 
+    const watchedMovie = JSON.parse(localStorage.getItem('WatchedList'));
+    const queuedMovie = JSON.parse(localStorage.getItem('QueuedList'));
+
     const addToWatchedBtn = document.querySelector('.modal__btn-watched');
     addToWatchedBtn.addEventListener('click', onClickWatchedBtn);
     function onClickWatchedBtn(e) {
       e.preventDefault();
       let movieObj = respData;
-      if (addToWatchedBtn.innerHTML === 'ADD TO WATCHED') {
+      const foundedEl = watchedMovie.find(elem => {
+        return elem;
+      });
+      console.log(foundedEl.id);
+      console.log(movieObj.id);
+      if ((addToWatchedBtn.innerHTML = 'ADD TO WATCHED')) {
         addToWatchedBtn.innerHTML = 'REMOVE FROM WATCHED';
       } else {
         addToWatchedBtn.innerHTML = 'ADD TO WATCHED';
