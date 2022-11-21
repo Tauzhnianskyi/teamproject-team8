@@ -46,36 +46,43 @@ export async function openModal(movie_id, movieSmallPoster) {
 
     const watchedMovie = JSON.parse(localStorage.getItem('WatchedList'));
     const queuedMovie = JSON.parse(localStorage.getItem('QueuedList'));
-
     const addToWatchedBtn = document.querySelector('.modal__btn-watched');
+    const addToQueuedBtn = document.querySelector('.modal__btn-queue');
+
+    let movieObj = respData;
+    // let foundedEl;
+    // let foundedElQ;
+    // if (watchedMovie !== null) {
+    //   foundedEl = watchedMovie.findIndex(elem => {
+    //     elem.id === movieObj.id;
+    //   });
+    //   console.log(foundedEl);
+    // }
+
+    // if (foundedEl.id === movieObj.id) {
+    //   addToWatchedBtn.innerHTML = 'REMOVE FROM WATCHED';
+    // } else {
+    //   addToWatchedBtn.innerHTML = 'ADD TO WATCHED';
+    // }
+    // if (queuedMovie !== null) {
+    //   foundedElQ = queuedMovie.findIndex(elem => {
+    //     elem.id === movieObj.id;
+    //   });
+    // }
+    // if (foundedElQ.id === movieObj.id) {
+    //   addToQueuedBtn.innerHTML = 'REMOVE FROM QUEUED';
+    // } else {
+    //   addToQueuedBtn.innerHTML = 'ADD TO QUEUED';
+    // }
+
     addToWatchedBtn.addEventListener('click', onClickWatchedBtn);
-    function onClickWatchedBtn(e) {
-      e.preventDefault();
-      let movieObj = respData;
-      const foundedEl = watchedMovie.find(elem => {
-        return elem;
-      });
-      console.log(foundedEl.id);
-      console.log(movieObj.id);
-      if ((addToWatchedBtn.innerHTML = 'ADD TO WATCHED')) {
-        addToWatchedBtn.innerHTML = 'REMOVE FROM WATCHED';
-      } else {
-        addToWatchedBtn.innerHTML = 'ADD TO WATCHED';
-      }
+    function onClickWatchedBtn() {
       const storageClick = new LocalStorageWatchedUtil();
       storageClick.addWatched(movieObj);
     }
 
-    const addToQueuedBtn = document.querySelector('.modal__btn-queue');
     addToQueuedBtn.addEventListener('click', onClickQueuedBtn);
-    function onClickQueuedBtn(e) {
-      e.preventDefault();
-      let movieObj = respData;
-      if (addToQueuedBtn.innerHTML === 'ADD TO QUEUED') {
-        addToQueuedBtn.innerHTML = 'REMOVE FROM QUEUED';
-      } else {
-        addToQueuedBtn.innerHTML = 'ADD TO QUEUED';
-      }
+    function onClickQueuedBtn() {
       const storageClickQ = new LocalStorageQueuedUtil();
       storageClickQ.addQueued(movieObj);
     }
