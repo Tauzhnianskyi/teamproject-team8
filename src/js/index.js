@@ -2,7 +2,7 @@ import { getCurrentPage } from './getCurrentPage';
 import { AddListenerToMovieList } from './modal-movie';
 import { renderUI } from './renderHomePageUI';
 import { onSubmit } from './searchinputLogic';
-import { filterByGenres } from './filter';
+//import { filterByGenres } from './filter';
 
 import { becomeDark } from './changeTheme';
 import { becomeLight } from './changeTheme';
@@ -11,9 +11,10 @@ import { storageChecker } from './changeTheme';
 import { byName, byYear, setBubble } from './homePageSorting';
 
 import debounce from 'debounce';
+import './trailer';
 
 // Adds a red line under active page in the website header
-getCurrentPage();
+//getCurrentPage();
 
 // UI render invocation
 // renderUI();
@@ -21,7 +22,7 @@ getCurrentPage();
 // searchInputLogic();
 
 // Add modal-movie
-AddListenerToMovieList();
+//AddListenerToMovieList();
 
 // searchInputLogic
 
@@ -32,8 +33,8 @@ select.addEventListener('change', e => {
   filterByGenres(select.value);
 });
 
-const searchForm = document.querySelector('.search-form');
-searchForm.addEventListener('submit', onSubmit);
+//const searchForm = document.querySelector('.search-form');
+//searchForm.addEventListener('submit', onSubmit);
 
 // change themes
 storageChecker();
@@ -43,18 +44,18 @@ const light = document.querySelector('[data-theme ="light"]');
 light.addEventListener('click', becomeLight);
 
 // sort by name
-const byNameSelect = document.querySelector('[name="by-name__select"]');
-byNameSelect.addEventListener('change', () => {
-  byName(byNameSelect.value);
-});
+// const byNameSelect = document.querySelector('[name="by-name__select"]');
+// byNameSelect.addEventListener('change', () => {
+//   byName(byNameSelect.value);
+// });
 
 // filter by year
-const byYearInput = document.querySelector('[name="by-year"]');
-byYearInput.addEventListener('input', setBubble);
+// const byYearInput = document.querySelector('[name="by-year"]');
+// byYearInput.addEventListener('input', setBubble);
 
-byYearInput.addEventListener(
-  'change',
-  debounce(() => {
-    byYear(byYearInput.value);
-  }, 300)
-);
+// byYearInput.addEventListener(
+//   'change',
+//   debounce(() => {
+//     byYear(byYearInput.value);
+//   }, 300)
+// );

@@ -4,6 +4,7 @@ import movieCardTpl from './../templates/movie-card.hbs';
 import axios from 'axios';
 import { openModal } from './modal-movie';
 import { renderPages } from './pagination-homepage';
+import { createTrailerLink } from './trailer';
 
 const moviesList = document.querySelector('.movie-list');
 // export const guard = document.querySelector('.guard');
@@ -74,6 +75,7 @@ export async function renderUI() {
       //   moviesList.innerHTML = data.map(elem => movieCardTpl(elem)).join('');
       // }
       moviesList.innerHTML = data.map(elem => movieCardTpl(elem)).join('');
+
       // observer.observe(guard); // двоит респ и разметку
 
       // observer.observe(guard);

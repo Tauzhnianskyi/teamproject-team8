@@ -5,6 +5,7 @@ import {
   fetchInitialData,
   convertResponseDataToObject,
 } from './renderHomePageUI';
+import { createTrailerLink } from './trailer';
 
 let page = 1;
 async function getData(page) {
@@ -46,6 +47,7 @@ export async function renderPages() {
       .then(convertResponseDataToObject)
       .then(data => {
         moviesList.innerHTML = data.map(elem => movieCardTpl(elem)).join('');
+        createTrailerLink(document.querySelectorAll('.youtube-btn'));
       });
   }
 

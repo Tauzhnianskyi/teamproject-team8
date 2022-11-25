@@ -6,4 +6,15 @@
       <p class='movie-description'>{{genres}} | {{year}}</p>
     </div>
   </a>
+  {{! <div class='youtube-btn'>
+    <button type='button' class=''>Play Trailer</button>
+  </div> }}
+  <div class='btn-id'>
+    <button data-id='{{id}}' class='youtube-btn'>
+      <div class='overlay-btn-youtube-text' data-id='{{id}}'>
+        <h2 class='btn-youtube-text' data-id='{{id}}'>Movie Trailer</h2>
+      </div>
+    </button>
+
+  </div>
 </li>
